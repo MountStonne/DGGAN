@@ -18,10 +18,9 @@ ROOT = FILE.parents[0]
 
 
 def run(
-        data_path=ROOT / 'data' / 'adult.csv',
-        continuous_columns=['age', 'capital-gain', 'capital-loss'],
-        categorical_columns=['workclass', 'education', 'edu-num', 'marital-status', 'occupation',
-                             'relationship', 'race', 'sex', 'native-country', 'income', 'hours-per-week'],
+        data_path=ROOT / 'data' / 'olympics.csv',
+        continuous_columns=['Age','Height', 'Weight'],
+        categorical_columns=['Sex', 'Year', 'Season', 'City', 'Sport', 'Medal', 'AOS', 'AOE'],
         device="cpu",
         batch_size=32,
         epochs=50,
@@ -158,12 +157,11 @@ def run(
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, default=ROOT / 'data' / 'adult.csv', help='source of data file')
-    parser.add_argument('--continuous_columns', nargs="*", type=str, default=['age', 'capital-gain', 'capital-loss'],
+    parser.add_argument('--data_path', type=str, default=ROOT / 'data' / 'olympics.csv', help='source of data file')
+    parser.add_argument('--continuous_columns', nargs="*", type=str, default=['Age','Height', 'Weight'],
                         help='list of continuous columns')
     parser.add_argument('--categorical_columns', nargs="*", type=str,
-                        default=['workclass', 'education', 'edu-num', 'marital-status', 'occupation',
-                                 'relationship', 'race', 'sex', 'native-country', 'income', 'hours-per-week'],
+                        default=['Sex', 'Year', 'Season', 'City', 'Sport', 'Medal', 'AOS', 'AOE'],
                         help='list of categorical columns')
     parser.add_argument('--device', type=str, default='cpu', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--batch_size', type=int, default=32, help='batch size')
