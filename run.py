@@ -28,7 +28,7 @@ def run(
         lr=0.0001,
         ns_G=0.8,
         ns_D=0.1,
-
+        amount=1,
 ):
     # Load data
     df = pd.read_csv(data_path)
@@ -135,7 +135,7 @@ def run(
                 demo = fake_df
                 final = pd.concat([final, demo]).reset_index(drop=True)
         else:
-            loop_num = int(len(df_real) * a // len(fake_df))
+            loop_num = int(len(df_real) * a // len(fake_df) * amount)
             for i in range(loop_num + 1):
                 noise = torch.randn(batch_size, z_dim).to(device)
                 fake = gen(noise)
@@ -171,6 +171,7 @@ def parse_opt():
     parser.add_argument('--lr', type=float, default=0.0001, help='learning rate')
     parser.add_argument('--ns_G', type=float, default=0.8, help='leakyRelu negative slope of generator')
     parser.add_argument('--ns_D', type=float, default=0.1, help='leakyRelu negative slope of discriminator')
+    parser.add_argument('--amount', type=float, default=1, help='percentage of generated data size over real data size')
 
     opt = parser.parse_args()
 
