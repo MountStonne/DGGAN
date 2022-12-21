@@ -1,7 +1,7 @@
-*.DS_Store
 __pycache__/
 bin/
 etc/
 lib/
 pyvenv.cfg
 share/
+*.DS_Store
