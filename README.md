@@ -39,6 +39,7 @@ pip install -r requirements.txt
 - Clean your data before use, to make sure:
     1. Any column name cannot fully include anther one (E.g. 'education', 'education_number')
     2. Use epochs number of 50, 100, 200, do not use other numbers, default is 50
+    3. No nan value in the data, check with "dataframe.isnull().values.any()"
 
 - Move your data to the 'data' folder
 
@@ -53,9 +54,9 @@ python3 run.py --source 'olympics.csv' \
 ```
 - Please find your generated data in "generations" folder
 
-- An evaluation and visualization example is in the file visualization_example.ipynb
+- An evaluation and visualization example is in the file "visualization_example.ipynb"
 
-- Visualization examples are in the folder 'visualizations'
+- Visualization examples are in the folder "visualizations"
 
 
 
