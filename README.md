@@ -55,6 +55,8 @@ python3 run.py --source 'olympics.csv' \
 
 - An evaluation and visualization example is in the file visualization_example.ipynb
 
+- Visualization examples are in the folder 'visualizations'
+
 
 
 
