@@ -58,6 +58,8 @@ python3 run.py --source 'olympics.csv' \
 
 - Visualization examples are in the folder "visualizations"
 
+- Grid search is recommended if your performance is not satisfying. Parameters that can be turned: batch-size, epochs, learning rate, leakyRely negative slope of generator, leakyRely negative slope of discriminator
+
 
 
 
