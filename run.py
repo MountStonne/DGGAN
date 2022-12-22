@@ -15,12 +15,12 @@ warnings.filterwarnings('ignore')
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]
-print(ROOT)
 
 
 def run(
-        data_path=ROOT / 'data' / 'olympics.csv',
-        continuous_columns=['Age','Height', 'Weight'],
+        source='olympics.csv',
+        output='olympics_generation.csv',
+        continuous_columns=['Age', 'Height', 'Weight'],
         categorical_columns=['Sex', 'Year', 'Season', 'City', 'Sport', 'Medal', 'AOS', 'AOE'],
         device="cpu",
         batch_size=32,
@@ -31,7 +31,10 @@ def run(
         amount=1,
 ):
     # Load data
-    df = pd.read_csv(data_path)
+    source_path = ROOT / 'data' / source
+    out_path = ROOT / 'generations' / output
+
+    df = pd.read_csv(source_path)
 
     # Find continuous data and normalization
     df_conti = df[continuous_columns].astype('int64')
@@ -86,7 +89,6 @@ def run(
 
     # Train and generate
     step = 0
-    print('Process:')
     for epoch in range(num_epochs):
         for batch_idx, real in enumerate(loader):
 
@@ -152,14 +154,16 @@ def run(
     df_fake_continuous = denorm(final[continuous_columns], norm_list, norm_types, dict_conti).apply(np.ceil).astype(
         'int64')
     df_fake = pd.concat([df_fake_continuous, df_fake_categorical], axis=1)
-    df_fake.to_csv(ROOT / 'generations/generation.csv', index=False)
-    print('Synthetic data has been saved to ', ROOT / 'generations/generation.csv')
+    df_fake.to_csv(out_path, index=False)
+    print('Synthetic data has been saved to ', out_path)
 
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, default=ROOT / 'data' / 'olympics.csv', help='source of data file')
-    parser.add_argument('--continuous_columns', nargs="*", type=str, default=['Age','Height', 'Weight'],
+    parser.add_argument('--source', type=str, default='olympics.csv', help='source of data file')
+    parser.add_argument('--output', type=str, default='olympics_generation.csv',
+                        help='source of data file')
+    parser.add_argument('--continuous_columns', nargs="*", type=str, default=['Age', 'Height', 'Weight'],
                         help='list of continuous columns')
     parser.add_argument('--categorical_columns', nargs="*", type=str,
                         default=['Sex', 'Year', 'Season', 'City', 'Sport', 'Medal', 'AOS', 'AOE'],
@@ -171,7 +175,6 @@ def parse_opt():
     parser.add_argument('--ns_G', type=float, default=0.8, help='leakyRelu negative slope of generator')
     parser.add_argument('--ns_D', type=float, default=0.1, help='leakyRelu negative slope of discriminator')
     parser.add_argument('--amount', type=float, default=1, help='percentage of generated data size over real data size')
-    # parser.add_argument('--output_path', type=str, default=ROOT / 'generation' / 'olympics.csv', help='source of data file')
 
     opt = parser.parse_args()
 
