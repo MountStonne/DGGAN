@@ -27,6 +27,33 @@ cd ..
 cd ..
 ```
 
+- Upgrade pip with mentioned command below.
+```
+pip install --upgrade pip
+```
+- Install requirements with mentioned command below.
+```
+pip install -r requirements.txt
+```
+
+- Clean your data before use, to make sure:
+    1. Any column name cannot fully include anther one (E.g. 'education', 'education_number')
+    2. Use epochs number of 50, 100, 200, do not use other numbers, default is 50
+
+- Move your data to the 'data' folder
+
+- Run the code below to train and generate.
+
+```
+python3 run.py --source 'olympics.csv' \
+               --output 'olympics_generation.csv' \
+               --amount 1.0 \
+               --continuous_columns "Age" "Height" "Weight" \
+               --categorical_columns 'Sex' 'Year' 'Season' 'City' 'Sport' 'Medal' 'AOS' 'AOE' 
+```
+- Please find your generated data in "generations" folder
+
+- An evaluation and visualization example is in the file visualization_example.ipynb
 
 
 
@@ -44,11 +71,3 @@ cd ..
 
 
 
-
-
-
-
-
-
-do not have same words in the column name
-use epochs number of 50, 100, 200, do not use other numbers
