@@ -2,7 +2,7 @@
 DGGAN (Demographic Generative Adversarial Network) is used to generate synthetic demographic data to improve the performance of fraud detection model.
 
 ## Steps to run Code
-- Clone the repository
+- Clone the repository or download from the release on the right side
 ```
 git clone https://github.com/MountStonne/DGGAN.git
 ```
