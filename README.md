@@ -54,7 +54,7 @@ python3 run.py --source 'olympics.csv' \
 ```
 - Please find your generated data in "generations" folder
 
-- An evaluation and visualization example is in the file "visualization_example.ipynb"
+- An evaluation and visualization example is in the file "evaluation_visualization.ipynb"
 
 - Visualization examples are in the folder "visualizations"
 
