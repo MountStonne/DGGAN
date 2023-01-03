@@ -1,6 +1,8 @@
 import pandas as pd
 
 
+# define three normalization methods
+# define norm and denorm function
 def max_abs_norm(data: pd.DataFrame, column: str):
     max_val = data[column].abs().max()
     data[column] = data[column] / max_val

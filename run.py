@@ -175,7 +175,6 @@ def parse_opt():
     parser.add_argument('--ns_G', type=float, default=0.8, help='leakyRelu negative slope of generator')
     parser.add_argument('--ns_D', type=float, default=0.1, help='leakyRelu negative slope of discriminator')
     parser.add_argument('--amount', type=float, default=1, help='percentage of generated data size over real data size')
-
     opt = parser.parse_args()
 
     return opt

@@ -1,6 +1,7 @@
 import pandas as pd
 
 
+# functions for one_hot_encoding and one_hot_decoding
 def one_hot_encoding(df: pd.DataFrame):
     cate_name = df.columns.to_numpy()
     cate_class_number = []

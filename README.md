@@ -7,7 +7,7 @@ DGGAN (Demographic Generative Adversarial Network) is used to generate synthetic
 git clone https://github.com/MountStonne/DGGAN.git
 ```
 
-- Goto the cloned folder.
+- Go to the cloned folder.
 ```
 cd DGGAN
 ```
